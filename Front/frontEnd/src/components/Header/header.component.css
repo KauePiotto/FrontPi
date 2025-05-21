@@ -1,0 +1,153 @@
+/* Container principal */
+header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Topo com logo e botões */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+/* Logo */
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e40af; /* .text-primary */
+}
+
+/* Menu Desktop */
+.nav-desktop {
+  display: none;
+}
+
+.nav-desktop ul {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4b5563; /* .text-gray-600 */
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #1e40af; /* .text-primary */
+}
+
+/* Botão Admin Desktop */
+.admin-btn {
+  display: none;
+  background-color: #1e40af; /* .bg-primary */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.admin-btn:hover {
+  background-color: #1e3a8a; /* .bg-secondary */
+}
+
+/* Ícone Menu Mobile */
+.menu-btn {
+  display: block;
+  padding: 0.5rem;
+  color: #4b5563;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-btn:hover {
+  color: #1e40af;
+}
+
+/* Menu Mobile */
+.mobile-menu {
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.mobile-menu.hidden {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-menu.visible {
+  max-height: 100vh;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu nav {
+  padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #4b5563;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.mobile-link:hover {
+  background-color: #f9fafb;
+  color: #1e40af;
+}
+
+/* Admin Mobile */
+.mobile-admin {
+  color: #1e40af;
+  background-color: transparent;
+}
+
+.mobile-admin:hover {
+  background-color: #1e40af;
+  color: white;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: block;
+  }
+
+  .admin-btn {
+    display: inline-block;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}

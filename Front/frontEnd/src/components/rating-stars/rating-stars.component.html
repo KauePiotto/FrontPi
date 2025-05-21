@@ -1,0 +1,16 @@
+<div class="flex space-x-1">
+  <button
+    *ngFor="let star of [1, 2, 3, 4, 5]"
+    (click)="setRating(star)"
+    [class.cursor-pointer]="!disabled"
+    [class.cursor-default]="disabled"
+    type="button"
+    [attr.aria-label]="'Avaliar com ' + star + ' estrelas'"
+    class="text-2xl"
+  >
+    <fa-icon 
+      [icon]="star <= rating ? 'fas fa-star' : 'far fa-star'" 
+      class="text-yellow-400"
+    ></fa-icon>
+  </button>
+</div>

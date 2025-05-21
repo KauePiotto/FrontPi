@@ -1,0 +1,125 @@
+.container {
+  padding: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+.btn-voltar {
+  margin-bottom: 1rem;
+  background-color: #1f2937;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+  user-select: none;
+}
+
+.btn-voltar:hover {
+  background-color: #374151;
+}
+
+.material-icons {
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
+.filtros-container {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  margin-bottom: 1.5rem;
+  max-width: 320px;
+}
+
+.filtros-container label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.filtros-container select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  transition: border-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.filtros-container select:focus {
+  outline: none;
+  border-color: #4b5563;
+  box-shadow: 0 0 0 2px #9ca3af88;
+}
+
+.tabela-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+thead {
+  background-color: #f3f4f6;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: #374151;
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.estrelas {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.estrela-cheia {
+  color: #fbbf24;
+}
+
+.estrela-vazia {
+  color: #d1d5db;
+}
+
+.btn-deletar {
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.2s ease-in-out;
+  padding: 0;
+}
+
+.btn-deletar:hover {
+  color: #991b1b;
+}

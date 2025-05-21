@@ -1,0 +1,78 @@
+<main class="font-body">
+  <!-- Hero Section -->
+  <section id="inicio" class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>
+        Experimente o sabor do
+        <span class="highlight">VERÃO</span>
+      </h1>
+      <p>Explore nosso catálogo e faça sua melhor escolha</p>
+      <button (click)="document.getElementById('cardapio')?.scrollIntoView({ behavior: 'smooth' })">
+        Ver Cardápio
+      </button>
+    </div>
+  </section>
+
+  <!-- Cardápio Section -->
+  <section id="cardapio" class="cardapio-section">
+    <h2>Nosso Cardápio</h2>
+
+    <div class="tabs">
+      <button
+        [class.active]="activeTab === 'geladinhos'"
+        (click)="setTab('geladinhos')"
+      >
+        Geladinhos
+      </button>
+      <button
+        [class.active]="activeTab === 'picoles'"
+        (click)="setTab('picoles')"
+      >
+        Picolés
+      </button>
+    </div>
+
+    <div class="products-grid">
+      <app-product-card
+        *ngFor="let produto of produtos[activeTab]"
+        [produto]="produto"
+      ></app-product-card>
+    </div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section id="feedback" class="feedback-section">
+    <h2>Deixe sua avaliação</h2>
+
+    <app-rating-stars
+      [rating]="rating"
+      (ratingChange)="setRating($event)"
+    ></app-rating-stars>
+
+    <textarea
+      [(ngModel)]="feedback"
+      rows="5"
+      placeholder="Deixe seu comentário..."
+    ></textarea>
+
+    <button (click)="submitFeedback()">Enviar Avaliação</button>
+
+    <p *ngIf="feedbackEnviado" class="success-message">
+      Obrigado pelo seu feedback!
+    </p>
+  </section>
+
+  <!-- Contato Section -->
+  <section id="contato" class="contato-section">
+    <h2>Contato</h2>
+    <p>Instagram: @geladinhos_e_picoles</p>
+    <p>Email: contato@geladinhosepicoles.com.br</p>
+    <p>Telefone: (11) 98765-4321</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Geladinhos e Picolés. Todos os direitos reservados.
+  </footer>
+</main>
