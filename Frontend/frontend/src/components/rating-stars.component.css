@@ -1,0 +1,40 @@
+.stars-container {
+  display: flex;
+  gap: 0.25rem; /* 4px */
+}
+
+.star-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem; /* igual ao text-2xl */
+  transition: transform 0.2s ease;
+}
+
+.star-button:hover:not(.disabled) {
+  transform: scale(1.2);
+}
+
+.star-button.disabled {
+  cursor: default;
+}
+
+.star-icon {
+  width: 1.5em;
+  height: 1.5em;
+  pointer-events: none;
+}
+
+.filled {
+  fill: #fbbf24; /* amarelo */
+}
+
+.outline {
+  fill: none;
+  stroke: #fbbf24;
+  stroke-width: 1.5;
+}

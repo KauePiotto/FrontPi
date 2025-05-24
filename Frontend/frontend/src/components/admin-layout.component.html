@@ -1,0 +1,50 @@
+<div class="container">
+  <!-- Menu lateral -->
+  <aside class="sidebar">
+    <div class="header">
+      <h1>Geladinho & Picolé</h1>
+      <p>Administrador</p>
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <button
+            [class.active]="isActiveRoute('/admin/estoque')"
+            (click)="navigateTo('/admin/estoque')"
+          >
+            <!-- Ícone simples usando emoji, para evitar dependência de libs -->
+            📦 Estoque
+          </button>
+        </li>
+        <li>
+          <button
+            [class.active]="isActiveRoute('/admin/produtos')"
+            (click)="navigateTo('/admin/produtos')"
+          >
+            🍦 Produtos
+          </button>
+        </li>
+        <li>
+          <button
+            [class.active]="isActiveRoute('/admin/feedbacks')"
+            (click)="navigateTo('/admin/feedbacks')"
+          >
+            💬 Feedbacks
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="logout-area">
+      <button (click)="logout()">
+        🔒 Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- Área de conteúdo -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,191 @@
+<main class="font-body">
+
+  <section
+    id="inicio"
+    class="hero-section"
+    [ngStyle]="{'background-image': 'url(\'/images/bg-hero.jpeg\')'}"
+  >
+    <div class="overlay-gradient"></div>
+
+    <div class="container hero-content">
+      <h1 class="hero-title">
+        Experimente o sabor do
+        <span class="hero-highlight">
+          VERÃO
+        </span>
+      </h1>
+      <p class="hero-subtitle">
+        Explore nosso catálogo e faça sua melhor escolha
+      </p>
+      <button (click)="scrollToSection('cardapio')" class="btn-primary">
+        Ver Cardápio
+      </button>
+    </div>
+  </section>
+
+  <section
+    id="cardapio"
+    class="menu-section"
+    [ngStyle]="{
+      'background-image': 'url(\'/images/bg-cardapio.jpeg\')',
+      'background-attachment': 'fixed',
+      'background-size': 'cover',
+      'background-position': 'center'
+    }"
+  >
+    <div class="overlay-gradient-2"></div>
+
+    <div class="container">
+      <h2 class="section-title">Nosso Cardápio</h2>
+
+      <div class="tab-buttons">
+        <button
+          (click)="setActiveTab('geladinhos')"
+          [class.active]="activeTab === 'geladinhos'"
+          class="tab-button left"
+        >
+          Geladinhos
+        </button>
+        <button
+          (click)="setActiveTab('picoles')"
+          [class.active]="activeTab === 'picoles'"
+          class="tab-button right"
+        >
+          Picolés
+        </button>
+      </div>
+
+      <div class="grid-products">
+        <div *ngFor="let produto of produtosData[activeTab]" class="card-product">
+          <img [src]="produto.image" [alt]="produto.name" class="product-image" />
+          <div class="product-info">
+            <h3 class="product-name">{{ produto.name }}</h3>
+            <p class="product-description">{{ produto.description }}</p>
+            <div class="product-footer">
+              <span class="product-price">R$ {{ produto.price.toFixed(2).replace('.', ',') }}</span>
+              <span *ngIf="produto.isHighlight" class="product-highlight">Destaque</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="feedback"
+    class="feedback-section"
+    [ngStyle]="{
+      'background-image': 'url(\'/images/bg-feedback.jpeg\')',
+      'background-attachment': 'fixed',
+      'background-size': 'cover',
+      'background-position': 'center'
+    }"
+  >
+    <div class="overlay-gradient-3"></div>
+
+    <div class="container">
+      <h2 class="section-title">Sua Opinião</h2>
+      <div class="feedback-form-container">
+        <form (ngSubmit)="handleSubmitFeedback()" class="feedback-form">
+          <div class="rating-container">
+            <label class="rating-label">Avalie nossos produtos</label>
+            <div class="stars">
+              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                <svg
+                  (click)="setRating(star)"
+                  class="star"
+                  [class.filled]="star <= rating"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.683-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.785.565-1.84-.197-1.54-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+                </svg>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="comment-container">
+            <label for="feedbackComment" class="comment-label">Comentário (opcional)</label>
+            <textarea
+              id="feedbackComment"
+              [(ngModel)]="feedback"
+              name="feedbackComment"
+              rows="4"
+              class="comment-textarea"
+              placeholder="Deixe seu comentário..."
+            ></textarea>
+          </div>
+
+          <div *ngIf="feedbackEnviado" class="success-message">
+            Obrigado pelo seu feedback!
+          </div>
+
+          <button type="submit" class="btn-primary btn-full">
+            Enviar Feedback
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="contato"
+    class="contact-section"
+    [ngStyle]="{
+      'background-image': 'url(\'/images/bg-contato.jpeg\')',
+      'background-attachment': 'fixed',
+      'background-size': 'cover',
+      'background-position': 'center top'
+    }"
+  >
+    <div class="overlay-gradient-4"></div>
+
+    <div class="container contact-container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 class="contact-title">Nosso Endereço</h3>
+          <div class="contact-details">
+            <p><strong>Rua Anum Dourado, 43</strong></p>
+            <p>São Paulo - SP</p>
+            <p>CEP: 03005-390</p>
+            <p><em>Referência: Localizado no bar do Bahia</em></p>
+            <p><strong>Telefone:</strong> (11) 9999-9999</p>
+            <p><strong>Email:</strong> contato@geladinhopicole.com</p>
+          </div>
+          <div class="working-hours">
+            <h4>Horário de Funcionamento</h4>
+            <p>Segunda à Sexta: 10h às 19h</p>
+            <p>Sábado e Domingo: 11h às 20h</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 class="contact-title">Envie uma Mensagem</h3>
+          <form class="contact-message-form">
+            <div>
+              <label for="nome">Nome</label>
+              <input id="nome" type="text" placeholder="Seu nome" class="input-field" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="seu@email.com" class="input-field" />
+            </div>
+            <div>
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" rows="4" placeholder="Sua mensagem..." class="textarea-field"></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Conteúdo do footer -->
+      </div>
+    </div>
+  </footer>
+</main>

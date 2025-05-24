@@ -1,0 +1,96 @@
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.btn-voltar {
+  background-color: #2d3748; /* cinza escuro */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #4a5568;
+}
+
+.filtros {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filtros label {
+  font-weight: 600;
+}
+
+.filtros select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f7fafc;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.stars fa-icon {
+  margin-right: 2px;
+}
+
+.stars {
+  display: flex;
+}
+
+.star-yellow {
+  color: #f6ad55; /* amarelo */
+}
+
+.star-gray {
+  color: #cbd5e0; /* cinza claro */
+}
+
+.btn-deletar {
+  background: none;
+  border: none;
+  color: #e53e3e; /* vermelho */
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.btn-deletar:hover {
+  color: #9b2c2c;
+}
+
+.sem-feedbacks {
+  text-align: center;
+  font-style: italic;
+  color: #718096;
+  padding: 1rem 0;
+}

@@ -1,0 +1,336 @@
+/* Geral */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Hero */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+.overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.hero-title {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.hero-highlight {
+  color: #ff9900;
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.btn-primary {
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  padding: 12px 32px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #cc5200;
+}
+
+/* Cardápio */
+
+.menu-section {
+  position: relative;
+  padding: 64px 0;
+  color: #333;
+}
+
+.overlay-gradient-2 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.6), transparent);
+  z-index: 1;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+  font-weight: 700;
+}
+
+.tab-buttons {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.tab-button {
+  border: 2px solid #ff6600;
+  background: white;
+  color: #ff6600;
+  font-weight: 700;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+  transition: background-color 0.3s ease;
+  margin-right: 2px;
+}
+
+.tab-button.right {
+  border-radius: 0 4px 4px 0;
+  margin-right: 0;
+}
+
+.tab-button.active {
+  background-color: #ff6600;
+  color: white;
+}
+
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-product {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.card-product:hover {
+  transform: translateY(-8px);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-name {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.product-description {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.product-price {
+  font-weight: 700;
+  color: #ff6600;
+  font-size: 1.1rem;
+}
+
+.product-highlight {
+  background-color: #ff6600;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Feedback */
+
+.feedback-section {
+  position: relative;
+  padding: 64px 0;
+  color: white;
+  text-align: center;
+}
+
+.overlay-gradient-3 {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.feedback-form-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  z-index: 2;
+  text-align: left;
+}
+
+.feedback-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.rating-container {
+  margin-bottom: 24px;
+}
+
+.stars {
+  display: flex;
+  gap: 8px;
+}
+
+.star {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.star.filled {
+  color: #ffcc00;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 1rem;
+  border: none;
+}
+
+.success-message {
+  margin-bottom: 16px;
+  color: #a6ff8a;
+  font-weight: 600;
+}
+
+/* Contato */
+
+.contact-section {
+  position: relative;
+  padding: 64px 0;
+  color: white;
+  text-align: left;
+}
+
+.overlay-gradient-4 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  z-index: 1;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-grid {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.contact-info, .contact-form {
+  flex: 1 1 400px;
+}
+
+.contact-title {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.contact-details p,
+.working-hours p {
+  margin: 4px 0;
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.textarea-field {
+  resize: vertical;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Footer */
+
+.footer {
+  background-color: #222;
+  color: #aaa;
+  padding: 32px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+}

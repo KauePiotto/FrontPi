@@ -1,0 +1,25 @@
+<div class="card-group">
+  <div class="image-wrapper">
+    <app-image-with-loading
+      [src]="image"
+      [alt]="name"
+      className="image"
+    ></app-image-with-loading>
+
+    <div *ngIf="isHighlight" class="highlight-star" title="Destaque">
+      ⭐
+    </div>
+
+    <div class="hover-overlay"></div>
+  </div>
+
+  <div class="content">
+    <h3 class="title">{{ name }}</h3>
+    <p class="description">{{ description }}</p>
+
+    <div class="footer">
+      <span class="price">R$ {{ price.toFixed(2) }}</span>
+      <button class="order-btn" type="button">Pedir</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container">
+
+  <!-- Botão voltar (aqui só um botão, adaptar para roteamento Angular) -->
+  <button class="btn" (click)="window.history.back()">← Voltar à Página Inicial</button>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <div class="filtro-item">
+      <label>ID Produto</label>
+      <input type="text" [(ngModel)]="filtros.idProduto" placeholder="Digite o ID" />
+    </div>
+    <div class="filtro-item">
+      <label>Sabor</label>
+      <input type="text" [(ngModel)]="filtros.sabor" placeholder="Digite o sabor" />
+    </div>
+    <div class="filtro-item">
+      <label>Tipo</label>
+      <select [(ngModel)]="filtros.tipo">
+        <option value="">Todos</option>
+        <option value="Geladinho">Geladinho</option>
+        <option value="Picolé">Picolé</option>
+      </select>
+    </div>
+    <div class="filtro-item">
+      <button class="btn" (click)="limparFiltros()">Limpar Filtros</button>
+    </div>
+  </div>
+
+  <!-- Botão adicionar -->
+  <button class="btn btn-primary" (click)="abrirModalParaAdicionar()">＋ Adicionar</button>
+
+  <!-- Tabela -->
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Sabor</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtosFiltrados">
+        <td>{{ produto.id }}</td>
+        <td>{{ produto.tipo }}</td>
+        <td>{{ produto.sabor }}</td>
+        <td>{{ produto.descricao }}</td>
+        <td>R$ {{ produto.valor.toFixed(2) }}</td>
+        <td>
+          <button class="btn-acao" (click)="abrirModalParaEditar(produto)">✏️</button>
+          <button class="btn-acao btn-danger" (click)="deletar(produto.id)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div *ngIf="modalAberto" class="modal-overlay">
+    <div class="modal">
+      <h2>{{ produtoEditando ? 'Editar Produto' : 'Adicionar Produto' }}</h2>
+
+      <form [formGroup]="form" (ngSubmit)="salvar()">
+
+        <div *ngIf="produtoEditando" class="form-group">
+          <label>ID</label>
+          <input type="text" [value]="produtoEditando.id" readonly />
+        </div>
+
+        <div class="form-group">
+          <label>Tipo</label>
+          <select formControlName="tipo" (change)="onTipoChange()">
+            <option value="">Selecione um tipo</option>
+            <option value="Geladinho">Geladinho</option>
+            <option value="Picolé">Picolé</option>
+          </select>
+          <div *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched" class="error">Campo obrigatório</div>
+        </div>
+
+        <div class="form-group">
+          <label>Sabor</label>
+          <select formControlName="sabor" [disabled]="!form.get('tipo')?.value">
+            <option value="">Selecione um sabor</option>
+            <option *ngFor="let sabor of saboresPorTipo[form.get('tipo')?.value]" [value]="sabor">
+              {{ sabor }}
+            </option>
+          </select>
+          <div *ngIf="form.get('sabor')?.invalid && form.get('sabor')?.touched" class="error">Campo obrigatório</div>
+        </div>
+
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea formControlName="descricao"></textarea>
+          <div *ngIf="form.get('descricao')?.invalid && form.get('descricao')?.touched" class="error">Campo obrigatório</div>
+        </div>
+
+        <div class="form-group">
+          <label>Valor</label>
+          <input type="number" formControlName="valor" min="0.01" step="0.01" />
+          <div *ngIf="form.get('valor')?.invalid && form.get('valor')?.touched" class="error">Valor inválido</div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn" (click)="fecharModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

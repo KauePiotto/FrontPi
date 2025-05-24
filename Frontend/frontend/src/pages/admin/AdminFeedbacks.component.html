@@ -1,0 +1,58 @@
+<div class="container">
+  <!-- Botão Voltar -->
+  <button (click)="voltar()" class="btn-voltar">
+    <fa-icon [icon]="faArrowLeft"></fa-icon> Voltar à Página Inicial
+  </button>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <label for="avaliacao">Avaliação</label>
+    <select
+      id="avaliacao"
+      [(ngModel)]="filtros.avaliacao"
+      (change)="handleFiltroChange($event)"
+    >
+      <option value="">Todas</option>
+      <option value="5">5 estrelas</option>
+      <option value="4">4 estrelas</option>
+      <option value="3">3 estrelas</option>
+      <option value="2">2 estrelas</option>
+      <option value="1">1 estrela</option>
+    </select>
+  </div>
+
+  <!-- Tabela -->
+  <table>
+    <thead>
+      <tr>
+        <th>Avaliação</th>
+        <th>Comentário</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of feedbacksFiltrados">
+        <td>
+          <div class="stars">
+            <fa-icon
+              *ngFor="let star of [1,2,3,4,5]; let i = index"
+              [icon]="faStar"
+              [ngClass]="i < feedback.avaliacao ? 'star-yellow' : 'star-gray'"
+            ></fa-icon>
+          </div>
+        </td>
+        <td>{{ feedback.comentario }}</td>
+        <td>{{ feedback.data | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <button (click)="handleDeletar(feedback.id)" class="btn-deletar">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="feedbacksFiltrados.length === 0">
+        <td colspan="4" class="sem-feedbacks">Nenhum feedback encontrado.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

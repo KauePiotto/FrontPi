@@ -1,0 +1,40 @@
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Overlay cinza claro que cobre toda a imagem */
+.loading-overlay {
+  position: absolute;
+  inset: 0; /* top:0; bottom:0; left:0; right:0 */
+  background-color: #e5e7eb; /* cinza claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinner animação */
+.spinner {
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+  color: #9ca3af; /* cinza médio */
+}
+
+.spinner-circle {
+  opacity: 0.25;
+}
+
+.spinner-path {
+  opacity: 0.75;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Esconde a imagem enquanto carrega para evitar flash */
+.hidden {
+  display: none;
+}

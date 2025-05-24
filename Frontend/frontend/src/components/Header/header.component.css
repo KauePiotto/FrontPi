@@ -1,0 +1,142 @@
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d63384;
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.nav-list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.nav-list a:hover {
+  color: #d63384;
+}
+
+.admin-btn {
+  display: none;
+  background-color: #d63384;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.admin-btn:hover {
+  background-color: #c2185b;
+}
+
+.menu-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border-top: 1px solid #eee;
+}
+
+.mobile-menu.open {
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 16px;
+}
+
+.mobile-menu li {
+  margin-bottom: 12px;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #555;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.mobile-menu a:hover {
+  background-color: #f0f0f0;
+  color: #d63384;
+}
+
+.admin-link {
+  display: block;
+  margin: 8px 16px;
+  padding: 8px 12px;
+  color: #d63384;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.admin-link:hover {
+  background-color: #d63384;
+  color: white;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: block;
+  }
+
+  .admin-btn {
+    display: inline-block;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}

@@ -1,0 +1,135 @@
+<div class="container">
+  <!-- Filtros -->
+  <div class="filtros">
+    <div>
+      <label for="idEstoque">ID Estoque</label>
+      <input
+        id="idEstoque"
+        name="idEstoque"
+        type="text"
+        [(ngModel)]="filtros.idEstoque"
+        (input)="handleFiltroChange($event)"
+        placeholder="Digite o ID"
+      />
+    </div>
+
+    <div>
+      <label for="produtoId">Produto</label>
+      <select
+        id="produtoId"
+        name="produtoId"
+        [(ngModel)]="filtros.produtoId"
+        (change)="handleFiltroChange($event)"
+      >
+        <option value="">Todos</option>
+        <option *ngFor="let produto of mockProdutos" [value]="produto.id">{{produto.nome}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="data">Data</label>
+      <input
+        id="data"
+        name="data"
+        type="date"
+        [(ngModel)]="filtros.data"
+        (input)="handleFiltroChange($event)"
+      />
+    </div>
+  </div>
+
+  <!-- Botão adicionar -->
+  <button class="btn-adicionar" (click)="abrirModalAdicionar()">
+    <fa-icon [icon]="faPlus"></fa-icon> Adicionar
+  </button>
+
+  <!-- Tabela -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID Estoque</th>
+        <th>ID Produto</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Quantidade Mínima</th>
+        <th>Data Atualização</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estoque of estoquesFiltrados">
+        <td>{{estoque.id}}</td>
+        <td>{{estoque.produtoId}}</td>
+        <td>{{estoque.nomeProduto}}</td>
+        <td>{{estoque.quantidade}}</td>
+        <td>{{estoque.minimo}}</td>
+        <td>{{estoque.dataAtualizacao}}</td>
+        <td>
+          <button (click)="editarEstoque(estoque)" class="btn-icon">
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+          <button (click)="deletarEstoque(estoque.id)" class="btn-icon">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal" *ngIf="modalAberto">
+  <div class="modal-content">
+    <h3>{{ estoqueEditando ? 'Editar Estoque' : 'Adicionar Estoque' }}</h3>
+    <form (ngSubmit)="salvarEstoque()">
+      <label for="produtoSelect">Produto</label>
+      <select
+        id="produtoSelect"
+        name="produtoId"
+        [value]="formData.produtoId"
+        (change)="handleFormChange($event)"
+        required
+      >
+        <option value="">Selecione o produto</option>
+        <option *ngFor="let produto of mockProdutos" [value]="produto.id">{{produto.nome}}</option>
+      </select>
+
+      <label for="quantidadeInput">Quantidade</label>
+      <input
+        id="quantidadeInput"
+        name="quantidade"
+        type="number"
+        [value]="formData.quantidade"
+        (input)="handleFormChange($event)"
+        required
+        min="1"
+      />
+
+      <label for="minimoInput">Quantidade Mínima</label>
+      <input
+        id="minimoInput"
+        name="minimo"
+        type="number"
+        [value]="formData.minimo"
+        (input)="handleFormChange($event)"
+        required
+        min="1"
+      />
+
+      <label for="dataInput">Data de Atualização</label>
+      <input
+        id="dataInput"
+        name="dataAtualizacao"
+        type="date"
+        [value]="formData.dataAtualizacao"
+        (input)="handleFormChange($event)"
+        required
+      />
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" (click)="cancelar()" class="btn-cancelar">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

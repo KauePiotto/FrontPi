@@ -1,0 +1,40 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <h1 class="logo">Geladinho & Picolé</h1>
+
+      <!-- Menu Desktop -->
+      <nav class="nav-desktop" *ngIf="!isAdminPage">
+        <ul class="nav-list">
+          <li><a href="#inicio" (click)="closeMenu()">Início</a></li>
+          <li><a href="#cardapio" (click)="scrollToCardapio(); $event.preventDefault()">Cardápio</a></li>
+          <li><a href="#feedback" (click)="closeMenu()">Feedback</a></li>
+          <li><a href="#contato" (click)="closeMenu()">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão Admin Desktop -->
+      <a *ngIf="!isAdminPage" routerLink="/admin/login" class="admin-btn">Admin</a>
+
+      <!-- Botão Mobile -->
+      <button (click)="toggleMenu()" class="menu-btn" aria-label="Menu">
+        <span *ngIf="!isMenuOpen">&#9776;</span>
+        <span *ngIf="isMenuOpen">&#10005;</span>
+      </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" [class.open]="isMenuOpen">
+      <nav *ngIf="!isAdminPage">
+        <ul>
+          <li><a href="#inicio" (click)="closeMenu()">Início</a></li>
+          <li><a href="#cardapio" (click)="scrollToCardapio(); $event.preventDefault()">Cardápio</a></li>
+          <li><a href="#feedback" (click)="closeMenu()">Feedback</a></li>
+          <li><a href="#contato" (click)="closeMenu()">Contato</a></li>
+        </ul>
+      </nav>
+      <a routerLink="/admin/login" (click)="closeMenu()" class="admin-link">Admin</a>
+    </div>
+  </div>
+</header>
